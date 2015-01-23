@@ -204,8 +204,6 @@ $(function() {
    */
   function importFile(asset){
 
-    console.log("Import File : " + asset.title);
-
     var payload = {
       url: asset.mediaGroups[0].contents[0].url,
       metadata: asset.mediaGroups[0].contents[0].credits,

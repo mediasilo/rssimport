@@ -82,8 +82,6 @@
 	  	$response->body($ca);
 	});
 
-
-
 	$app->run();
 
 ?>
