@@ -29,7 +29,6 @@ $(function() {
    * @param  {string} url URL of the feed
    */
   function getFeed(url){
-    // Sample URL: http://www.wdcdn.net/rss/presentation/library/client/xplatform/id/84323d118c3154afa77f5c52311d40bd
     $.jGFeed(url,
       function(feeds){
         if(!feeds){

@@ -34,7 +34,7 @@
           <div class="row">
               <div class="col-lg-6">
                 <div class="input-group">
-                  <input id="feedurl" type="text" class="form-control" placeholder="WireDrive RSS" value="http://www.wdcdn.net/rss/presentation/library/client/xplatform/id/84323d118c3154afa77f5c52311d40bd">
+                  <input id="feedurl" type="text" class="form-control" placeholder="WireDrive RSS" value="">
                   <span class="input-group-btn">
                     <button id="preview" class="btn btn-default" type="button">Preview</button>
                   </span>
