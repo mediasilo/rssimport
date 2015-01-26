@@ -34,7 +34,7 @@
           <div class="row">
               <div class="col-lg-6">
                 <div class="input-group">
-                  <input id="feedurl" type="text" class="form-control" placeholder="WireDrive RSS" value="">
+                  <input id="feedurl" type="text" class="form-control" placeholder="RSS Link" value="">
                   <span class="input-group-btn">
                     <button id="preview" class="btn btn-default" type="button">Preview</button>
                   </span>
