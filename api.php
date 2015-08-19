@@ -35,7 +35,6 @@
 			$status_code = curl_getinfo($ch, CURLINFO_HTTP_CODE); 
 			$result=curl_exec($ch);
 			curl_close ($ch);
-			
 			return $result;
 		}
 
