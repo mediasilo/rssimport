@@ -4,7 +4,7 @@
 
 		function getUserInfo($username,$password,$hostname){
 
-			$apiurl = "https://p-api-new.mediasilo.com/v3/me/";
+			$apiurl = "https://api.mediasilo.com/v3/me/";
 
 			$ch = curl_init();
 			curl_setopt($ch, CURLOPT_URL,$apiurl);
@@ -23,7 +23,7 @@
 		function getUserProjects(){
 			
 			$user = json_decode($_COOKIE['mediasilo']);
-			$apiurl = "https://p-api-new.mediasilo.com/v3/projects/";
+			$apiurl = "https://api.mediasilo.com/v3/projects/";
 
 			$ch = curl_init();
 			curl_setopt($ch, CURLOPT_URL,$apiurl);
@@ -97,7 +97,7 @@
 			);
 			
 			$user = json_decode($_COOKIE['mediasilo']);
-			$apiurl = "https://p-api-new.mediasilo.com/v3/projects/";
+			$apiurl = "https://api.mediasilo.com/v3/projects/";
 			
 			$ch = curl_init();
 			curl_setopt($ch, CURLOPT_URL,$apiurl);
