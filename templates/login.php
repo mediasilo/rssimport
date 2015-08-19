@@ -47,7 +47,7 @@
                 <input type="text" class="form-control" name="hostname" placeholder="Hostname" style="margin: 5px;">
               </div>
 
-               <input type="submit" class="btn btn-default" value="Login" style="margin: 5px;"></button>
+               <input type="submit" class="btn btn-default" value="Logon" style="margin: 5px;"></button>
 
               </div>
             </form>

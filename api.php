@@ -62,7 +62,7 @@
 
 			$user = json_decode($_COOKIE['mediasilo']);
 			$apiurl = "https://api.mediasilo.com/v3/assets/";
-            
+
 			
 			$ch = curl_init();
 			curl_setopt($ch, CURLOPT_URL,$apiurl);
