@@ -61,7 +61,7 @@
 			);
 
 			$user = json_decode($_COOKIE['mediasilo']);
-			$apiurl = "https://b-api.mediasilo.com/v3/assets/";
+			$apiurl = "https://api.mediasilo.com/v3/assets/";
 			
 			$ch = curl_init();
 			curl_setopt($ch, CURLOPT_URL,$apiurl);
@@ -75,8 +75,8 @@
 			$status_code = curl_getinfo($ch, CURLINFO_HTTP_CODE); 
 			$result=curl_exec($ch);
 			curl_close ($ch);
-			
-			if($status_code == 200){
+
+            if($status_code == 200){
 				return true;
 			} else {
 				return false;
