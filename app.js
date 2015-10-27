@@ -53,7 +53,7 @@ $(function() {
         output = output + "</tbody></table>";
         $('#results').append(output);
         $('#importheading').html(feeds.entries.length + " Files Ready for Import ("+bytesToSize(totalsize)+") <a href='#' name='importall' class='btn btn-default btn-xs pull-right' id='importall'>Import All</a>");
-    });
+    },50);
     $("#importall").removeAttr("disabled");
   }
 
