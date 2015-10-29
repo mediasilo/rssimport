@@ -42,10 +42,12 @@ $(function() {
           var entry = feeds.entries[i];
           output = output + "<tr uuid='"+entry.uuid+"'><td width='100'><img src='http://mediasilo.imagefly.io/w_100/"+encodeURI(entry.mediaGroups[0].contents[0].thumbnails[0].url)+"'/>";
           output = output + "<td><span style='font-weight: bold'>"+entry.title+"</span><br>";
-          for(var p = 0; p < entry.mediaGroups[0].contents[0].credits.length; p++){
-            output = output + entry.mediaGroups[0].contents[0].credits[p].role + " : ";
-            output = output + entry.mediaGroups[0].contents[0].credits[p].content + "<br>";
-          }
+            if(entry.mediaGroups[0].contents[0].credits){
+                for(var p = 0; p < entry.mediaGroups[0].contents[0].credits.length; p++){
+                    output = output + entry.mediaGroups[0].contents[0].credits[p].role + " : ";
+                    output = output + entry.mediaGroups[0].contents[0].credits[p].content + "<br>";
+                }
+            }
           output = output + "</td>";
           output = output + "<td>" + bytesToSize(entry.mediaGroups[0].contents[0].fileSize) + "</td></tr>";
           totalsize = totalsize + parseInt(entry.mediaGroups[0].contents[0].fileSize);
@@ -53,7 +55,7 @@ $(function() {
         output = output + "</tbody></table>";
         $('#results').append(output);
         $('#importheading').html(feeds.entries.length + " Files Ready for Import ("+bytesToSize(totalsize)+") <a href='#' name='importall' class='btn btn-default btn-xs pull-right' id='importall'>Import All</a>");
-    },50);
+    },500);
     $("#importall").removeAttr("disabled");
   }
 
@@ -225,10 +227,12 @@ $(function() {
     //Add transferred file to the right column
     var output = output + "<tr><td width='100'><img src='http://mediasilo.imagefly.io/w_100/"+encodeURI(asset.mediaGroups[0].contents[0].thumbnails[0].url)+"'/>";
     output = output + "<td><span style='font-weight: bold'>"+asset.title+"</span><br>";
-    for(var p = 0; p < asset.mediaGroups[0].contents[0].credits.length; p++){
-      output = output + asset.mediaGroups[0].contents[0].credits[p].role + " : ";
-      output = output + asset.mediaGroups[0].contents[0].credits[p].content + "<br>";
-    }
+      if(asset.mediaGroups[0].contents[0].credits) {
+          for (var p = 0; p < asset.mediaGroups[0].contents[0].credits.length; p++) {
+              output = output + asset.mediaGroups[0].contents[0].credits[p].role + " : ";
+              output = output + asset.mediaGroups[0].contents[0].credits[p].content + "<br>";
+          }
+      }
     output = output + "</td>";
     output = output + "<td>" + bytesToSize(asset.mediaGroups[0].contents[0].fileSize) + "</td></tr>";
     $('#transferredfiles table > tbody').prepend(output);

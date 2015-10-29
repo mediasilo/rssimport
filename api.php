@@ -48,9 +48,12 @@
 		 */
 		function createAsset($payload){
 
-			$title = $payload->title;
+			$title = str_replace("'", "", $payload->title);
 			$url = $payload->url;
-			$metadata = $payload->metadata;
+
+			if(isset($payload->metadata)){
+				$metadata = $payload->metadata;
+			}
 			$targetproject = $payload->targetproject;
 
 			$fields = array(
@@ -76,7 +79,42 @@
 			$result=curl_exec($ch);
 			curl_close ($ch);
 
-            if($status_code == 200){
+			if(isset($payload->metadata)){
+				$id = json_decode($result)->id;
+				$this->createMetadata($id,$payload->metadata);
+			}
+			if($status_code == 200){
+				return true;
+			} else {
+				return false;
+			}
+
+		}
+
+
+		function createMetadata($assetid,$payload){
+
+			$user = json_decode($_COOKIE['mediasilo']);
+			$apiurl = "https://api.mediasilo.com/v3/assets/".$assetid."/metadata/";
+
+			$data = array(
+				array('key' => 'role','value' => $payload[0]->role ),
+				array('key' => 'content','value' => $payload[0]->content )
+			);
+
+			$ch = curl_init();
+			curl_setopt($ch, CURLOPT_URL,$apiurl);
+			curl_setopt($ch, CURLOPT_TIMEOUT, 30);
+			curl_setopt($ch, CURLOPT_RETURNTRANSFER,1);
+			curl_setopt($ch, CURLOPT_HTTPAUTH, CURLAUTH_BASIC);
+			curl_setopt($ch, CURLOPT_USERPWD, $user->username . ":" . $user->password);
+			curl_setopt($ch, CURLOPT_HTTPHEADER, Array("MediaSiloHostContext: " . $user->hostname, "Content-Type: application/json"));
+			curl_setopt($ch, CURLOPT_POST, 1 );
+			curl_setopt($ch, CURLOPT_POSTFIELDS, json_encode($data));
+			$status_code = curl_getinfo($ch, CURLINFO_HTTP_CODE);
+			$result=curl_exec($ch);
+			curl_close ($ch);
+			if($status_code == 200){
 				return true;
 			} else {
 				return false;
